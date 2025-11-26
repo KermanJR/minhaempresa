@@ -13,45 +13,45 @@ const Services = () => {
   const services = [
     {
       icon: Globe,
-      title: "Sites Institucionais",
+      title: "Sites & Portais",
       description:
-        "Websites profissionais que fortalecem sua presença digital e transmitem credibilidade ao seu negócio.",
-      features: ["Design Responsivo", "SEO Otimizado", "CMS Personalizado"],
+        "Websites institucionais, portais corporativos e plataformas que fortalecem sua presença digital e geram autoridade no mercado.",
+      features: ["Design Responsivo", "SEO Avançado", "CMS Personalizado"],
     },
     {
       icon: Layers,
       title: "Sistemas Web",
       description:
-        "Sistemas robustos e escaláveis para automatizar processos e aumentar a eficiência operacional.",
-      features: ["Dashboards Customizados", "API Integration", "Cloud Deploy"],
+        "Sistemas robustos e escaláveis que automatizam processos críticos, aumentam eficiência operacional e reduzem custos.",
+      features: ["Dashboards Customizados", "API REST/GraphQL", "Cloud Deploy"],
     },
     {
       icon: Target,
       title: "Landing Pages",
       description:
-        "Páginas de alta conversão focadas em capturar leads e impulsionar suas campanhas de marketing.",
-      features: ["Alta Conversão", "A/B Testing", "Analytics Integrado"],
+        "Páginas de alta conversão focadas em capturar leads qualificados e impulsionar suas campanhas de marketing com resultados comprovados.",
+      features: ["Otimização de Conversão", "A/B Testing", "Analytics Avançado"],
     },
     {
       icon: Smartphone,
-      title: "Aplicativos",
+      title: "Aplicativos Móveis",
       description:
-        "Apps nativos e híbridos para iOS e Android, oferecendo experiências móveis excepcionais.",
+        "Apps nativos (iOS/Android) e progressivos que oferecem experiências móveis excepcionais com suporte offline e push notifications.",
       features: ["Cross-Platform", "Push Notifications", "Offline Support"],
     },
     {
       icon: ShoppingCart,
-      title: "E-commerce",
+      title: "E-commerce & Lojas",
       description:
-        "Lojas virtuais completas com gestão de produtos, pagamentos seguros e experiência de compra otimizada.",
-      features: ["Multi-Pagamento", "Gestão de Estoque", "Relatórios"],
+        "Plataformas de venda online completas com gestão de estoque, múltiplos gateways de pagamento e experiência de compra otimizada.",
+      features: ["Multi-Pagamento", "Gestão de Estoque", "Relatórios Detalhados"],
     },
     {
       icon: Sparkles,
       title: "Soluções Personalizadas",
       description:
-        "Desenvolvimento sob medida para atender necessidades específicas do seu negócio com tecnologia de ponta.",
-      features: ["Consultoria", "Integração", "Suporte Dedicado"],
+        "Desenvolvimento under medida para atender às necessidades únicas do seu negócio com tecnologia de ponta e suporte dedicado.",
+      features: ["Consultoria Estratégica", "Integração Sistêmica", "Suporte Dedicado"],
     },
   ];
 
@@ -63,20 +63,20 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-24 relative overflow-hidden">
+    <section id="services" className="py-24 relative overflow-hidden bg-black">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Nossos <span className="gradient-text">Serviços</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-green-500">
+            Nossos Serviços
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Soluções digitais integradas que impulsionam o crescimento e a eficiência do seu negócio
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Soluções digitais integradas que impulsionam o crescimento do seu negócio
           </p>
         </motion.div>
 
@@ -84,51 +84,59 @@ const Services = () => {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="glass-effect p-8 rounded-xl hover:border-primary/60 transition-all group hover:scale-105"
+              whileHover={{ y: -8 }}
+              className="p-8 rounded-lg border border-green-500/30 hover:border-green-500/60 transition-all bg-black/40 group cursor-pointer"
             >
-              <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform glow-primary">
-                <service.icon className="w-8 h-8 text-primary" />
+              <div className="w-12 h-12 rounded-lg bg-green-500/20 flex items-center justify-center mb-6 group-hover:bg-green-500/30 transition-colors">
+                <service.icon className="w-6 h-6 text-green-500" />
               </div>
-              <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+
+              <h3 className="text-xl font-bold mb-3 text-green-500">
                 {service.title}
               </h3>
-              <p className="text-muted-foreground mb-6">{service.description}</p>
-              <ul className="space-y-2">
+
+              <p className="text-gray-400 mb-6 text-sm leading-relaxed">
+                {service.description}
+              </p>
+
+              <div className="space-y-2">
                 {service.features.map((feature, i) => (
-                  <li key={i} className="flex items-center text-sm">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary mr-3" />
+                  <div
+                    key={i}
+                    className="flex items-center text-sm text-gray-400"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 mr-3 flex-shrink-0" />
                     {feature}
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </motion.div>
           ))}
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="glass-effect p-8 md:p-12 rounded-2xl max-w-3xl mx-auto border-primary/30">
-            <h3 className="text-3xl font-bold mb-4">
-              Pronto para começar seu projeto?
+          <div className="p-8 md:p-12 rounded-lg border border-green-500/30 max-w-3xl mx-auto bg-black/40">
+            <h3 className="text-3xl font-bold mb-4 text-green-500">
+              Pronto para impulsionar seu negócio?
             </h3>
-            <p className="text-muted-foreground text-lg mb-8">
-              Vamos transformar sua ideia em realidade com tecnologia de ponta e design
-              excepcional
+            <p className="text-gray-400 text-lg mb-8">
+              Vamos conversar sobre como podemos transformar sua visão em realidade com tecnologia de ponta
             </p>
             <Button
-              variant="hero"
-              size="lg"
+              variant="outline"
+              className="bg-green-500 text-white border-green-500 hover:bg-green-600"
               onClick={() => scrollToSection("#contact")}
             >
-              Solicite um Orçamento Gratuito
+              Agendar Consultoria
             </Button>
           </div>
         </motion.div>

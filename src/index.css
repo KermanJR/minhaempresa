@@ -39,8 +39,8 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     /* Custom futuristic tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(166 100% 50% / 0.2), hsl(270 95% 65% / 0.2));
-    --gradient-glow: linear-gradient(135deg, hsl(166 100% 50%), hsl(270 95% 65%));
+    --gradient-primary: linear-gradient(135deg, rgba(0, 255, 65, 0.2), rgba(0, 255, 65, 0.1));
+    --gradient-glow: linear-gradient(135deg, #00ff41, #00ff41);
     --glow-primary: 0 0 40px hsl(166 100% 50% / 0.5);
     --glow-secondary: 0 0 40px hsl(270 95% 65% / 0.5);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

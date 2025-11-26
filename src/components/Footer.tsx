@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter, Mail, Heart } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -7,34 +7,33 @@ const Footer = () => {
     { icon: Github, href: "#", label: "GitHub" },
     { icon: Linkedin, href: "#", label: "LinkedIn" },
     { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Mail, href: "mailto:kerman@exemplo.com", label: "Email" },
+    { icon: Mail, href: "mailto:kermanpereira@gmail.com", label: "Email" },
   ];
 
   return (
-    <footer className="bg-card/50 border-t border-border/50">
+    <footer className="bg-black border-t border-green-500/30">
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center text-white font-bold">
+              <div className="w-10 h-10 bg-green-500 border-2 border-green-600 rounded-lg flex items-center justify-center text-white text-xs font-bold">
                 CV
               </div>
-              <h3 className="text-2xl font-bold gradient-text">CodeVision</h3>
+              <h3 className="text-2xl font-bold text-green-500">CodeVision</h3>
             </div>
-            <p className="text-muted-foreground">
-              Agência especializada em transformar negócios através de soluções digitais 
-              inovadoras e resultados mensuráveis.
+            <p className="text-white text-sm">
+              Agência de software especializada em transformação digital e soluções que geram impacto real no negócio.
             </p>
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Links Rápidos</h4>
+            <h4 className="text-sm font-bold text-green-500 mb-4 uppercase tracking-wider">Links</h4>
             <ul className="space-y-2">
               {["Início", "Sobre", "Portfólio", "Serviços", "Contato"].map((item) => (
                 <li key={item}>
                   <a
                     href={`#${item.toLowerCase()}`}
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-white hover:text-green-500 transition-colors text-sm"
                   >
                     {item}
                   </a>
@@ -44,26 +43,24 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Conecte-se</h4>
-            <div className="flex gap-4">
+            <h4 className="text-sm font-bold text-green-500 mb-4 uppercase tracking-wider">Conecte-se</h4>
+            <div className="flex gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 rounded-lg glass-effect flex items-center justify-center hover:border-primary/60 transition-all hover:scale-110"
+                  className="w-9 h-9 rounded-lg border border-green-500/30 flex items-center justify-center hover:border-green-500 hover:bg-green-500/10 transition-all"
                 >
-                  <social.icon className="w-5 h-5 text-primary" />
+                  <social.icon className="w-4 h-4 text-green-700" />
                 </a>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-border/50 text-center text-muted-foreground">
-          <p className="flex items-center justify-center gap-2">
-            © {currentYear} CodeVision.
-          </p>
+        <div className="pt-8 border-t border-green-500/20 text-center text-white text-xs uppercase tracking-wider">
+          <p>© {currentYear} CodeVision. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>

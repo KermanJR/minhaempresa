@@ -16,12 +16,9 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { label: "Início", href: "#home" },
     { label: "Sobre", href: "#about" },
-    { label: "Portfólio", href: "#portfolio" },
     { label: "Serviços", href: "#services" },
-    { label: "Processo", href: "#process" },
-    { label: "Contato", href: "#contact" },
+    { label: "Clientes", href: "#portfolio" },
   ];
 
   const scrollToSection = (href: string) => {
@@ -37,28 +34,37 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "glass-effect shadow-lg" : "bg-transparent"
+        isScrolled
+          ? "bg-black/80 backdrop-blur-xl shadow-lg border-b border-green-500/20"
+          : "bg-black/60 backdrop-blur-xl"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
+          {/* Logo */}
           <motion.a
             href="#home"
             onClick={(e) => {
               e.preventDefault();
               scrollToSection("#home");
             }}
-            className="text-2xl font-bold gradient-text cursor-pointer flex items-center gap-2"
+            className="flex items-center gap-2 group"
             whileHover={{ scale: 1.05 }}
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center text-white text-sm font-bold">
-              CV
-            </div>
-            CodeVision
+            <motion.div
+              className="w-8 h-8 flex items-center justify-center"
+              style={{ filter: "drop-shadow(0 0 8px #00ff41)" }}
+            >
+              {/* Neon SVG logo */}
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 16L16 6L26 16L16 26Z" stroke="#00ff41" strokeWidth="2.5" strokeLinejoin="round" />
+              </svg>
+            </motion.div>
+            <span className="text-white text-xl font-bold tracking-tight">nexus</span>
           </motion.a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center gap-10">
             {navItems.map((item) => (
               <a
                 key={item.label}
@@ -67,27 +73,34 @@ const Navbar = () => {
                   e.preventDefault();
                   scrollToSection(item.href);
                 }}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300 relative group"
+                className="text-white text-base font-medium hover:text-green-500 transition-colors px-2"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-full transition-all duration-300" />
               </a>
             ))}
-            <Button
-              variant="hero"
-              size="lg"
-              onClick={() => scrollToSection("#contact")}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Solicite um Orçamento
-            </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => scrollToSection("#contact")}
+                className="border-green-500 text-white font-semibold px-6 py-2 rounded-full shadow-[0_0_16px_#00ff41] hover:bg-green-500/10 hover:text-green-500 transition-all"
+                style={{ boxShadow: "0 0 16px #00ff41" }}
+              >
+                Fale com a gente
+              </Button>
+            </motion.div>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground"
+            className="md:hidden flex items-center justify-center w-10 h-10 rounded-full border border-green-500 text-white bg-black/60 shadow-[0_0_8px_#00ff41]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            style={{ boxShadow: "0 0 8px #00ff41" }}
           >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
@@ -99,7 +112,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-effect border-t border-border/50"
+            className="md:hidden bg-black/80 backdrop-blur-xl border-t border-green-500/20"
           >
             <div className="container mx-auto px-4 py-6 space-y-4">
               {navItems.map((item, index) => (
@@ -112,19 +125,20 @@ const Navbar = () => {
                   }}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="block text-foreground/80 hover:text-primary transition-colors py-2"
+                  transition={{ delay: index * 0.05 }}
+                  className="block text-white hover:text-green-500 transition-colors py-2 text-base font-medium"
                 >
                   {item.label}
                 </motion.a>
               ))}
               <Button
-                variant="hero"
+                variant="outline"
                 size="lg"
-                className="w-full"
+                className="w-full border-green-500 text-white font-semibold rounded-full shadow-[0_0_16px_#00ff41] hover:bg-green-500/10 hover:text-green-500 transition-all"
+                style={{ boxShadow: "0 0 16px #00ff41" }}
                 onClick={() => scrollToSection("#contact")}
               >
-                Solicite um Orçamento
+                Fale com a gente
               </Button>
             </div>
           </motion.div>
