@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import ClanColor from "../../public/clan-color.png";
 
 const Portfolio = () => {
   const categories = ["Todos", "Sites", "Sistemas", "Landing Pages", "Apps", "E-commerce"];
@@ -12,7 +13,7 @@ const Portfolio = () => {
       title: "Clan Color",
       category: "E-commerce",
       description: "Plataforma de fotos em Polaroid com clube de assinatura mensal. Serviço inovador que revive momentos especiais.",
-      image: "../../public/clan-color.png",
+      image: ClanColor,
       tags: ["E-commerce", "Fotos", "Assinatura"],
       link: "https://clancolor.com.br/",
     },
