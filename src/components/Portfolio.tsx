@@ -13,10 +13,14 @@ const Portfolio = () => {
       category: "E-commerce",
       description: "Plataforma de fotos em Polaroid com clube de assinatura mensal. Serviço inovador que revive momentos especiais.",
       longDescription: "Desenvolvemos uma plataforma e-commerce completa com integração de pagamentos, gestão de assinaturas recorrentes, sistema de fotografia polaroid e clube de fidelização.",
-      image: "../../public/clan-color.png",
+      image: "/clan-color.png",
       tags: ["E-commerce", "Fotos", "Assinatura"],
       link: "https://clancolor.com.br/",
-      
+      stats: {
+        users: "500+",
+        conversion: "12%",
+        growth: "45%"
+      },
       color: "from-pink-500 to-rose-500",
       icon: Target,
     },
@@ -25,10 +29,14 @@ const Portfolio = () => {
       category: "Sites",
       description: "Empresa de energia solar com mais de 9 anos de experiência e 500+ projetos executados. Soluções para residências, indústrias e propriedades rurais.",
       longDescription: "Portal corporativo com showcase de projetos, sistema de orçamento automático, integração com WhatsApp e área administrativa de leads. +9 anos no mercado, 500+ clientes satisfeitos.",
-      image: "../../public/brasol.png",
+      image: "/brasol.png",
       tags: ["Solar", "Engenharia", "Sustentabilidade"],
       link: "https://brasolengenharia.com.br/",
-      
+      stats: {
+        projects: "500+",
+        clients: "1000+",
+        experience: "9 anos"
+      },
       color: "from-yellow-500 to-orange-500",
       icon: Zap,
     },
@@ -37,10 +45,14 @@ const Portfolio = () => {
       category: "Sites",
       description: "Sindicato dos Juízes Federais do Mato Grosso do Sul. Portal com notícias, convênios, artigos e gestão de conteúdo.",
       longDescription: "Portal corporativo completo com CMS integrado, gestão de notícias, seção de convênios, área administrativa e newsletter automática para comunicação com membros.",
-      image: "../../public/sindjufe.png",
+      image: "/sindjufe.png",
       tags: ["Sindicato", "Portal", "CMS"],
       link: "https://sindjufems.org.br/",
-      
+      stats: {
+        members: "5000+",
+        articles: "300+",
+        uptime: "99.9%"
+      },
       color: "from-blue-600 to-blue-400",
       icon: Users,
     },
@@ -49,30 +61,33 @@ const Portfolio = () => {
       category: "Sites",
       description: "Empresa de soluções completas em energia solar com sistema de orçamento automatizado e contato direto.",
       longDescription: "Website responsivo com formulário de orçamento inteligente, integração com APIs de cotação de energia solar, chat ao vivo e sistema de CRM integrado.",
-      image: "../../public/solarcia.png",
+      image: "/solarcia.png",
       tags: ["Solar", "Orçamento", "Contato"],
       link: "https://solarcia.com.br/",
-      
+      stats: {
+        leads: "200+",
+        avgTime: "2.3s",
+        rating: "4.9★"
+      },
       color: "from-amber-500 to-yellow-500",
       icon: Zap,
     },
-     {
-      title: "Nest Rental",
-      category: "Sistemas",
-      description: "Sistema especializado em aluguel e venda equipamentos inovadores, seguros e de baixo custo.",
-      longDescription: "Sistema especializado em aluguel e venda equipamentos inovadores, seguros e de baixo custo.",
-      image: "../../public/nestrental.png",
-      tags: ["TypeScript", "React", "Node.js"],
-    },    
     {
       title: "Dandrade Assessoria em Precatórios",
       category: "Sistemas",
       description: "Sistema especializado em gestão de precatórios com análise de dados e relatórios automáticos.",
       longDescription: "Sistema web enterprise para gestão de precatórios com dashboard analítico, processamento de dados em batch, relatórios customizáveis e API para integrações.",
-      image: "../../public/dandrade.png",
+      image: "/dandrade.png",
       tags: ["TypeScript", "React", "Node.js"],
-    }      
-
+      link: "https://dandrade.com.br/",
+      stats: {
+        cases: "150+",
+        accuracy: "99.8%",
+        processing: "1M+ registros"
+      },
+      color: "from-purple-600 to-indigo-600",
+      icon: Target,
+    },
   ];
 
   const filteredProjects =
