@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 7%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 7%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 166 100% 50%;
+    --primary-foreground: 240 10% 3.9%;
+
+    --secondary: 270 95% 65%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 5% 15%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 270 95% 65%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 6% 20%;
+    --input: 240 6% 20%;
+    --ring: 166 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom futuristic tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(166 100% 50% / 0.2), hsl(270 95% 65% / 0.2));
+    --gradient-glow: linear-gradient(135deg, hsl(166 100% 50%), hsl(270 95% 65%));
+    --glow-primary: 0 0 40px hsl(166 100% 50% / 0.5);
+    --glow-secondary: 0 0 40px hsl(270 95% 65% / 0.5);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+  
+  .glow-secondary {
+    box-shadow: var(--glow-secondary);
+  }
+
+  .gradient-text {
+    background: var(--gradient-glow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-effect {
+    background: hsl(var(--card) / 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+}
