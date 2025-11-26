@@ -56,6 +56,14 @@ const Portfolio = () => {
       color: "from-amber-500 to-yellow-500",
       icon: Zap,
     },
+     {
+      title: "Nest Rental",
+      category: "Sistemas",
+      description: "Sistema especializado em aluguel e venda equipamentos inovadores, seguros e de baixo custo.",
+      longDescription: "Sistema especializado em aluguel e venda equipamentos inovadores, seguros e de baixo custo.",
+      image: "../../public/nestrental.png",
+      tags: ["TypeScript", "React", "Node.js"],
+    },    
     {
       title: "Dandrade Assessoria em Precatórios",
       category: "Sistemas",
