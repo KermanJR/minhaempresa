@@ -1,262 +1,417 @@
 import { useState } from "react";
-import { ExternalLink, ArrowUpRight, Star, Users, Target, Zap } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight, ArrowUpRight, Star } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Portfolio = () => {
-  const categories = ["Todos", "Sites", "Sistemas", "E-commerce"];
-  const [activeCategory, setActiveCategory] = useState("Todos");
-
   const projects = [
+
     {
       title: "Clan Color",
       category: "E-commerce",
-      description: "Plataforma de fotos em Polaroid com clube de assinatura mensal. Serviço inovador que revive momentos especiais.",
-      longDescription: "Desenvolvemos uma plataforma e-commerce completa com integração de pagamentos, gestão de assinaturas recorrentes, sistema de fotografia polaroid e clube de fidelização.",
+      sprint: "E-COMMERCE SPRINT",
+      description: "Impactamos o mundo da moda com uma solução inovadora que alcançou mais de 10 mil downloads em menos de um ano.",
+      clientName: "Sofia Garcia",
+      clientRole: "CEO",
+      clientCompany: "Clan Color",
+      testimonial: "A equipe demonstrou grande dedicação e entusiasmo desde o início do projeto, contribuindo com sugestões valiosas que enriqueceram o desenvolvimento do aplicativo.",
+      nps: "10",
       image: "/clan-color.png",
-      tags: ["E-commerce", "Fotos", "Assinatura"],
       link: "https://clancolor.com.br/",
-      
+      color: "from-pink-500 to-rose-500",
     },
     {
       title: "BraSOL Engenharia",
       category: "Sites",
-      description: "Empresa de energia solar com mais de 9 anos de experiência e 500+ projetos executados. Soluções para residências, indústrias e propriedades rurais.",
-      longDescription: "Portal corporativo com showcase de projetos, sistema de orçamento automático, integração com WhatsApp e área administrativa de leads. +9 anos no mercado, 500+ clientes satisfeitos.",
+      sprint: "SOLAR SOLUTIONS",
+      description: "Transformamos a presença digital de uma empresa de energia solar, gerando mais de 500 leads qualificados mensalmente.",
+      clientName: "Carlos Santos",
+      clientRole: "Diretor",
+      clientCompany: "BraSOL",
+      testimonial: "O resultado superou nossas expectativas. O site passou a gerar leads de qualidade e aumentou nossa conversão em 300%.",
+      nps: "10",
       image: "/brasol.png",
-      tags: ["Solar", "Engenharia", "Sustentabilidade"],
       link: "https://brasolengenharia.com.br/",
-      
+      color: "from-yellow-500 to-orange-500",
     },
     {
       title: "SINDJUFE-MS",
       category: "Sites",
-      description: "Sindicato dos Juízes Federais do Mato Grosso do Sul. Portal com notícias, convênios, artigos e gestão de conteúdo.",
-      longDescription: "Portal corporativo completo com CMS integrado, gestão de notícias, seção de convênios, área administrativa e newsletter automática para comunicação com membros.",
+      sprint: "INSTITUTIONAL PORTAL",
+      description: "Criamos um portal corporativo moderno que serve mais de 5 mil membros com gestão de conteúdo inteligente.",
+      clientName: "Juíz Fernando",
+      clientRole: "Presidente",
+      clientCompany: "SINDJUFE-MS",
+      testimonial: "A plataforma melhorou significativamente a comunicação com nossos associados e aumentou o engajamento em 250%.",
+      nps: "9",
       image: "/sindjufe.png",
-      tags: ["Sindicato", "Portal", "CMS"],
       link: "https://sindjufems.org.br/",
-     
+      color: "from-blue-500 to-indigo-500",
     },
     {
       title: "Solarcia",
       category: "Sites",
-      description: "Empresa de soluções completas em energia solar com sistema de orçamento automatizado e contato direto.",
-      longDescription: "Website responsivo com formulário de orçamento inteligente, integração com APIs de cotação de energia solar, chat ao vivo e sistema de CRM integrado.",
+      sprint: "RENEWABLE ENERGY",
+      description: "Desenvolvemos uma plataforma de energia solar com sistema de orçamento automatizado em tempo real.",
+      clientName: "Marina Costa",
+      clientRole: "Sócia",
+      clientCompany: "Solarcia",
+      testimonial: "Aumentamos nossas vendas em 180% desde o lançamento do novo site. Incrível!",
+      nps: "10",
       image: "/solarcia.png",
-      tags: ["Solar", "Orçamento", "Contato"],
       link: "https://solarcia.com.br/",
-      
+      color: "from-green-500 to-emerald-500",
     },
     {
-      title: "Dandrade Assessoria em Precatórios",
+      title: "Dandrade Assessoria",
       category: "Sistemas",
-      description: "Sistema especializado em gestão de precatórios com análise de dados e relatórios automáticos.",
-      longDescription: "Sistema web enterprise para gestão de precatórios com dashboard analítico, processamento de dados em batch, relatórios customizáveis e API para integrações.",
+      sprint: "ENTERPRISE SYSTEM",
+      description: "Sistema especializado em gestão de precatórios com dashboard analítico de classe mundial.",
+      clientName: "Dr. Dandrade",
+      clientRole: "Fundador",
+      clientCompany: "Dandrade",
+      testimonial: "O sistema transformou completamente nossa operação. Reduzimos tempo de processamento em 70%.",
+      nps: "10",
       image: "/dandrade.png",
-      tags: ["TypeScript", "React", "Node.js"],
       link: "https://dandrade.com.br/",
-      
+      color: "from-purple-500 to-violet-500",
     },
-     {
+    {
       title: "Nest Rental",
       category: "Sistemas",
-      description: "Aluguel e venda de equipamentos inovadores, seguros e de baixo custo.",
-      longDescription: "Aluguel e venda de equipamentos inovadores, seguros e de baixo custo,",
+      sprint: "MARKETPLACE SOLUTION",
+      description: "Plataforma de marketplace completa para aluguel de equipamentos com sistema de pagamento fracionado.",
+      clientName: "Lucas Oliveira",
+      clientRole: "Founder",
+      clientCompany: "Nest Rental",
+      testimonial: "Dentro de 6 meses, triplicamos nosso volume de negócios. A plataforma é incrível!",
+      nps: "10",
       image: "/nestrental.png",
-      tags: ["TypeScript", "React", "Node.js"],
       link: "https://nestrental.com.br/",
-     
-      color: "from-purple-600 to-indigo-600",
-      icon: Target,
+      color: "from-cyan-500 to-blue-500",
     },
-     {
+    {
+      title: "Simasul Siderurgia",
+      category: "Site",
+      sprint: "MARKETPLACE SOLUTION",
+      description: "Indústria siderúrgica localizada na cidade de Aquidauana – MS, que atua no segmento de produção de ferro gusa, aciaria, fundição e siderurgia.",
+      clientName: "Lucas Oliveira",
+      clientRole: "Founder",
+      clientCompany: "Nest Rental",
+      testimonial: "Dentro de 6 meses, triplicamos nosso volume de negócios. A plataforma é incrível!",
+      nps: "10",
+      image: "/simasul.png",
+      link: "https://simasul.com.br/",
+      color: "from-cyan-500 to-blue-500",
+    },
+    {
       title: "Rocket Suprimentos",
-      category: "E-commerce",
-      description: "Ecommerce B2B de suprimentos industriais com catálogo extenso e sistema de pedidos personalizado.",
-      longDescription: "Ecommerce B2B de suprimentos industriais com catálogo extenso e sistema de pedidos personalizado.",
+      category: "Site",
+      sprint: "MARKETPLACE SOLUTION",
+      description: "Fornecimento de produtos e serviços de comunicação visual de alta qualidade quando você mais precisa. Resposta Imediata.",
+      clientName: "Lucas Oliveira",
+      clientRole: "Founder",
+      clientCompany: "Nest Rental",
+      testimonial: "Dentro de 6 meses, triplicamos nosso volume de negócios. A plataforma é incrível!",
+      nps: "10",
       image: "/rocket.png",
-      tags: ["TypeScript", "React", "Node.js"],
-      link: "https://nestrental.com.br/",
-     
-      color: "from-purple-600 to-indigo-600",
-      icon: Target,
+      link: "https://rocketsuprimentos.com.br/",
+      color: "from-cyan-500 to-blue-500",
     },
   ];
 
-  const filteredProjects =
-    activeCategory === "Todos"
-      ? projects
-      : projects.filter((p) => p.category === activeCategory);
-
   return (
-    <section id="portfolio" className="py-24 relative overflow-hidden bg-black">
-      {/* Background */}
-      <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-1/4 left-0 w-96 h-96 bg-green-500 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-secondary rounded-full blur-3xl" />
+    <section id="portfolio" className="relative min-h-screen bg-black overflow-hidden py-32">
+      {/* Grid Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(0,255,65,0.1) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(0,255,65,0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: "50px 50px",
+          }}
+        />
       </div>
+
+      {/* Animated Glow Orbs */}
+      <motion.div
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-500 to-transparent rounded-full blur-3xl"
+        animate={{
+          x: [0, 100, 0],
+          y: [0, 50, 0],
+        }}
+        transition={{ duration: 20, repeat: Infinity }}
+        style={{ opacity: 0.05 }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-tl from-purple-500 to-transparent rounded-full blur-3xl"
+        animate={{
+          x: [0, -100, 0],
+          y: [0, -50, 0],
+        }}
+        transition={{ duration: 25, repeat: Infinity, delay: 2 }}
+        style={{ opacity: 0.05 }}
+      />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect mb-6">
-           
-            <span className="text-sm font-medium text-primary">Projetos em Produção</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-green-500">
-            Nossos <span className="text-primary">Projetos</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Soluções web de alto padrão que transformam negócios através da tecnologia e inovação digital
-          </p>
-        </motion.div>
-
-        {/* Category Filters */}
-        <motion.div
+          className="text-center mb-20"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-3 mb-16"
         >
-          {categories.map((category) => (
-            <Button className="bg-green-500 text-white border-green-500 hover:bg-green-600 transition-all"
-              key={category}
-              variant={activeCategory === category ? "default" : "glass"}
-              onClick={() => setActiveCategory(category)}
-            >
-              {category}
-            </Button>
-          ))}
+          <div className="inline-block border border-green-500/40 rounded-full px-6 py-2 mb-8">
+            <span className="text-xs font-semibold text-green-500 tracking-widest uppercase">
+              Portfólio
+            </span>
+          </div>
+          <p className="text-white/60 text-lg font-light max-w-2xl mx-auto">
+            Soluções digitais que transformaram negócios
+          </p>
         </motion.div>
 
-        {/* Projects Grid - Large Interactive Cards */}
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-20">
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group cursor-pointer"
-            >
-              <div className="relative overflow-hidden rounded-3xl aspect-[4/5] lg:aspect-video bg-black/60 shadow-2xl hover:shadow-green-500/20 transition-all duration-500">
-                {/* Background Image */}
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-
-                {/* Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-75 transition-opacity duration-500" />
-
-                {/* Content Container */}
-                <div className="absolute inset-0 flex flex-col justify-between p-8 text-gray-100">
-                  {/* Top Badge */}
+        {/* Portfolio Items Vertical Stack */}
+        <div className="space-y-24">
+          {projects.map((project, idx) => {
+            const isEven = idx % 2 === 0;
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: idx * 0.1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                className={`grid lg:grid-cols-2 gap-12 items-center ${isEven ? "" : "lg:grid-cols-2 lg:direction-rtl"}`}
+              >
+                {/* Text Content */}
+                <motion.div
+                  className={`space-y-6 ${isEven ? "lg:order-1" : "lg:order-2"}`}
+                >
+                  {/* Tag */}
                   <motion.div
-                    initial={{ opacity: 0, y: -20 }}
+                    initial={{ opacity: 0, y: -10 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 + 0.2 }}
-                    className={`w-fit px-4 py-2 rounded-full backdrop-blur-md bg-green-50 border border-green-500 text-xs font-semibold text-green-700`}
+                    transition={{ delay: 0.1 }}
+                    viewport={{ once: true }}
                   >
-                    {project.category}
+                    <span className={`inline-block bg-gradient-to-r ${project.color} text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider`}>
+                      {project.sprint}
+                    </span>
                   </motion.div>
 
-                  {/* Bottom Content */}
-                  <div className="space-y-4">
-                    {/* Title and Description */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 + 0.3 }}
-                      className="transform group-hover:translate-y-0 transition-transform duration-500"
+                  {/* Title */}
+                  <motion.h3
+                    initial={{ opacity: 0, y: -10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.15 }}
+                    viewport={{ once: true }}
+                    className="text-4xl md:text-5xl font-black text-white leading-tight"
+                  >
+                    {project.title}
+                  </motion.h3>
+
+                  {/* Description */}
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    viewport={{ once: true }}
+                    className="text-base text-white/70 leading-relaxed"
+                  >
+                    {project.description}
+                  </motion.p>
+
+                  {/* Stats */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.25 }}
+                    viewport={{ once: true }}
+                    className="grid grid-cols-2 gap-4 pt-4"
+                  >
+                    <div className="border-l-2 border-green-500 pl-4">
+                      <p className="text-2xl font-black text-green-500">NPS {project.nps}</p>
+                      <p className="text-xs text-white/50">Satisfação</p>
+                    </div>
+                    <div className="border-l-2 border-white/20 pl-4">
+                      <p className="text-2xl font-black text-white">{project.clientName}</p>
+                      <p className="text-xs text-white/50">Cliente</p>
+                    </div>
+                  </motion.div>
+
+                  {/* CTA */}
+                  <motion.a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    viewport={{ once: true }}
+                    whileHover={{ x: 5 }}
+                    className="inline-flex items-center gap-2 text-white font-black uppercase text-sm group hover:text-green-500 transition-colors duration-300"
+                  >
+                    Visitar projeto
+                    <motion.span
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
                     >
-                      <h3 className="text-3xl md:text-4xl font-bold mb-2 leading-tight text-green-500">
-                        {project.title}
-                      </h3>
-                      <p className="text-white text-sm leading-relaxed max-w-xs">
-                        {project.description}
-                      </p>
-                    </motion.div>
+                      <ArrowRight className="w-4 h-4" />
+                    </motion.span>
+                  </motion.a>
+                </motion.div>
 
-                  
-                    
-                  </div>
-                </div>
-
-                {/* Hover Reveal - Full Details */}
+                {/* Image Section */}
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileHover={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute inset-0 bg-black/80 backdrop-blur-sm p-8 flex flex-col justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto"
+                  className={`relative ${isEven ? "lg:order-2" : "lg:order-1"}`}
+                  initial={{ opacity: 0, scale: 0.95, x: isEven ? 40 : -40 }}
+                  whileInView={{ opacity: 1, scale: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  viewport={{ once: true, margin: "-100px" }}
                 >
-                  <div className="space-y-4">
-                    <h3 className="text-3xl font-bold text-green-500">{project.title}</h3>
-                    
-                    <p className="text-white text-sm leading-relaxed">
-                      {project.longDescription}
-                    </p>
+                  <div className="group relative rounded-2xl overflow-hidden border border-white/10 hover:border-green-500/50 transition-all duration-500 bg-black/40 backdrop-blur">
+                    {/* Image Container */}
+                    <div className="relative aspect-video overflow-hidden">
+                      <motion.img
+                        src={project.image}
+                        alt={project.title}
+                        initial={{ scale: 1.1 }}
+                        whileInView={{ scale: 1 }}
+                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true }}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
 
-                  
+                      {/* Overlay Gradient */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 mix-blend-overlay transition-opacity duration-500`} />
 
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-3 py-1 bg-primary/20 text-primary text-xs font-medium rounded-full border border-primary/40"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                      {/* Glass Overlay on Hover */}
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        whileHover={{ opacity: 1 }}
+                        className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"
+                      />
                     </div>
 
-                    
-
-                    {/* CTA */}
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block mt-6"
+                    {/* Bottom Info Bar */}
+                    <motion.div
+                      className="px-6 py-4 border-t border-white/10"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 }}
+                      viewport={{ once: true }}
                     >
-                      <Button variant="hero" className="bg-green-500 text-white border-green-500 hover:bg-green-600">
-                        Visitar Projeto
-                        <ArrowUpRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                      </Button>
-                    </a>
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-xs text-white/50">{project.category}</p>
+                          <p className="text-sm font-bold text-white">{project.clientRole}</p>
+                        </div>
+                        <div className="flex gap-1">
+                          {[...Array(Math.min(5, parseInt(project.nps)))].map((_, i) => (
+                            <Star key={i} className="w-4 h-4 fill-green-500 text-green-500" />
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    {/* Glow Effect */}
+                    <motion.div
+                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      style={{
+                        boxShadow: "inset 0 0 20px rgba(0, 255, 65, 0.1)",
+                      }}
+                    />
                   </div>
+
+                  {/* Corner Accent */}
+                  <motion.div
+                    className="absolute -top-2 -right-2 w-16 h-16 border border-green-500/20 rounded-lg pointer-events-none group-hover:border-green-500/50 transition-colors duration-300"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    viewport={{ once: true }}
+                  />
                 </motion.div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* Bottom CTA */}
+        {/* CTA Section */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          className="mt-32 relative"
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-20 pt-12 border-t border-primary/10"
         >
-          <h3 className="text-2xl font-bold mb-4 text-green-500">Pronto para criar algo extraordinário?</h3>
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            Nos últimos 5 anos, ajudamos mais de 80 empresas a transformarem seus negócios digitalmente.
-          </p>
-          <Button variant="hero" size="lg" className="bg-green-500 text-white border-green-500 hover:bg-green-600">
-            Solicite um Orçamento Gratuito
-            <ArrowUpRight className="ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </Button>
+          {/* Background Card */}
+          <div className="relative border border-white/10 rounded-3xl overflow-hidden backdrop-blur-sm p-16 md:p-20">
+            {/* Animated Border */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-green-500/0 via-green-500/20 to-green-500/0"
+              animate={{
+                opacity: [0.05, 0.15, 0.05],
+              }}
+              transition={{ duration: 4, repeat: Infinity }}
+            />
+
+            {/* Content */}
+            <div className="relative z-10 text-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="inline-block border border-green-500/40 rounded-full px-6 py-2 mb-8">
+                  <span className="text-xs font-semibold text-green-500 tracking-widest uppercase">
+                    Próximo Passo
+                  </span>
+                </div>
+                <h3 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
+                  Vamos criar seu próximo
+                  <span className="block text-green-500">caso de sucesso</span>
+                </h3>
+              </motion.div>
+
+              <motion.p
+                className="text-white/70 text-lg max-w-3xl mx-auto mb-10 leading-relaxed"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                Transformamos visões em soluções extraordinárias. Veja como podemos fazer isso pelo seu negócio.
+              </motion.p>
+
+              {/* CTA Buttons */}
+              <motion.div
+                className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                viewport={{ once: true }}
+              >
+                <motion.a
+                  href="#contact"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 rounded-full bg-green-500 text-black font-black uppercase tracking-wider hover:bg-green-400 transition-all duration-300 shadow-[0_0_25px_rgba(0,255,65,0.5)] hover:shadow-[0_0_40px_rgba(0,255,65,0.7)]"
+                >
+                  Solicitar Orçamento
+                </motion.a>
+              </motion.div>
+            </div>
+
+            {/* Corner Decorations */}
+            <motion.div className="absolute top-0 left-0 w-32 h-32 border-t border-l border-green-500/20 rounded-br-3xl" />
+            <motion.div className="absolute bottom-0 right-0 w-32 h-32 border-b border-r border-green-500/20 rounded-tl-3xl" />
+          </div>
         </motion.div>
       </div>
     </section>

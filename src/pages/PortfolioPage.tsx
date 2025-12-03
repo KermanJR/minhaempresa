@@ -1,273 +1,330 @@
 import { useState } from "react";
-import { ExternalLink, ArrowUpRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { ArrowRight, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NexusLogo from "@/components/NexusLogo";
 
 const PortfolioPage = () => {
-  const categories = ["Todos", "Sites", "Sistemas", "E-commerce"];
-  const [activeCategory, setActiveCategory] = useState("Todos");
+  const [activeProject, setActiveProject] = useState<number | null>(null);
+  const [activeFilter, setActiveFilter] = useState("Todos");
 
   const projects = [
     {
+      id: 1,
       title: "Clan Color",
       category: "E-commerce",
-      description: "Plataforma de fotos em Polaroid com clube de assinatura mensal. Serviço inovador que revive momentos especiais.",
-      longDescription: "Desenvolvemos uma plataforma e-commerce completa com integração de pagamentos, gestão de assinaturas recorrentes, sistema de fotografia polaroid e clube de fidelização.",
+      shortTitle: "Clan Color",
       image: "/clan-color.png",
-      tags: ["E-commerce", "Fotos", "Assinatura"],
       link: "https://clancolor.com.br/",
-      stats: {
-        users: "500+",
-        conversion: "12%",
-        growth: "45%"
-      },
-      color: "bg-green-500",
-      icon: "Target",
+      gradient: "from-pink-500 via-rose-500 to-red-500",
+      bgColor: "bg-pink-950/20",
     },
     {
+      id: 2,
       title: "BraSOL Engenharia",
       category: "Sites",
-      description: "Empresa de energia solar com mais de 9 anos de experiência e 500+ projetos executados. Soluções para residências, indústrias e propriedades rurais.",
-      longDescription: "Portal corporativo com showcase de projetos, sistema de orçamento automático, integração com WhatsApp e área administrativa de leads. +9 anos no mercado, 500+ clientes satisfeitos.",
+      shortTitle: "BraSOL",
       image: "/brasol.png",
-      tags: ["Solar", "Engenharia", "Sustentabilidade"],
       link: "https://brasolengenharia.com.br/",
-      stats: {
-        projects: "500+",
-        clients: "1000+",
-        experience: "9 anos"
-      },
-      color: "bg-green-500",
-      icon: "Zap",
+      gradient: "from-yellow-500 via-orange-500 to-amber-500",
+      bgColor: "bg-yellow-950/20",
     },
     {
+      id: 3,
       title: "SINDJUFE-MS",
       category: "Sites",
-      description: "Sindicato dos Juízes Federais do Mato Grosso do Sul. Portal com notícias, convênios, artigos e gestão de conteúdo.",
-      longDescription: "Portal corporativo completo com CMS integrado, gestão de notícias, seção de convênios, área administrativa e newsletter automática para comunicação com membros.",
+      shortTitle: "SINDJUFE",
       image: "/sindjufe.png",
-      tags: ["Sindicato", "Portal", "CMS"],
       link: "https://sindjufems.org.br/",
-      stats: {
-        members: "5000+",
-        articles: "300+",
-        uptime: "99.9%"
-      },
-      color: "bg-green-500",
-      icon: "Users",
+      gradient: "from-blue-500 via-indigo-500 to-purple-500",
+      bgColor: "bg-blue-950/20",
     },
     {
+      id: 4,
       title: "Solarcia",
       category: "Sites",
-      description: "Empresa de soluções completas em energia solar com sistema de orçamento automatizado e contato direto.",
-      longDescription: "Website responsivo com formulário de orçamento inteligente, integração com APIs de cotação de energia solar, chat ao vivo e sistema de CRM integrado.",
+      shortTitle: "Solarcia",
       image: "/solarcia.png",
-      tags: ["Solar", "Orçamento", "Contato"],
       link: "https://solarcia.com.br/",
-      stats: {
-        leads: "200+",
-        avgTime: "2.3s",
-        rating: "4.9★"
-      },
-      color: "bg-green-500",
-      icon: "Zap",
+      gradient: "from-cyan-500 via-teal-500 to-green-500",
+      bgColor: "bg-cyan-950/20",
     },
     {
-      title: "Dandrade Assessoria em Precatórios",
+      id: 5,
+      title: "Dandrade Assessoria",
       category: "Sistemas",
-      description: "Sistema especializado em gestão de precatórios com análise de dados e relatórios automáticos.",
-      longDescription: "Sistema web enterprise para gestão de precatórios com dashboard analítico, processamento de dados em batch, relatórios customizáveis e API para integrações.",
+      shortTitle: "Dandrade",
       image: "/dandrade.png",
-      tags: ["TypeScript", "React", "Node.js"],
       link: "https://dandrade.com.br/",
-      stats: {
-        cases: "150+",
-        accuracy: "99.8%",
-        processing: "1M+ registros"
-      },
-      color: "bg-green-500",
-      icon: "Target",
+      gradient: "from-purple-500 via-pink-500 to-rose-500",
+      bgColor: "bg-purple-950/20",
     },
   ];
 
-  const filteredProjects =
-    activeCategory === "Todos"
-      ? projects
-      : projects.filter((p) => p.category === activeCategory);
+  const categories = ["Todos", "Sites", "Sistemas", "E-commerce"];
+  const filteredProjects = activeFilter === "Todos" 
+    ? projects 
+    : projects.filter(p => p.category === activeFilter);
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="min-h-screen bg-black overflow-hidden">
       <Navbar />
-      
+
       {/* Hero Section */}
-      <section className="pt-40 pb-20 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary rounded-full blur-3xl" />
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black pt-20">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.02)_1px,transparent_1px)] bg-[size:80px_80px]" />
         </div>
 
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-green-500">
-              Portfólio <span className="text-primary">Completo</span>
-            </h1>
-            <p className="text-white text-lg max-w-2xl mx-auto">
-              Conheça todos os projetos que desenvolvemos e transformamos em sucesso digital
-            </p>
-          </motion.div>
+        <motion.div
+          className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-green-500 to-transparent rounded-full blur-3xl"
+          animate={{ x: [0, 100, 0], y: [0, 50, 0] }}
+          transition={{ duration: 20, repeat: Infinity }}
+          style={{ opacity: 0.06 }}
+        />
+        <motion.div
+          className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-purple-500 to-transparent rounded-full blur-3xl"
+          animate={{ x: [0, -100, 0], y: [0, -50, 0] }}
+          transition={{ duration: 25, repeat: Infinity, delay: 2 }}
+          style={{ opacity: 0.06 }}
+        />
 
-          {/* Category Filters */}
+        <div className="container mx-auto px-4 relative z-10 text-center max-w-5xl">
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-7xl md:text-8xl lg:text-9xl font-black text-white mb-8 leading-tight"
+          >
+            Projetos
+            <span className="block bg-gradient-to-r from-green-400 via-green-500 to-emerald-500 text-transparent bg-clip-text">
+              Marcantes
+            </span>
+          </motion.h1>
+
+          {/* Nexus Logo Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex flex-wrap justify-center gap-3 mb-16"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex justify-center items-center gap-2 mb-8"
           >
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={activeCategory === category ? "default" : "glass"}
-                onClick={() => setActiveCategory(category)}
-                className="transition-all"
-              >
-                {category}
-              </Button>
-            ))}
+            <NexusLogo size="sm" withGlow={true} animated={true} />
+            <span className="text-xs font-black text-green-500 tracking-widest uppercase">NEXUS Portfolio</span>
           </motion.div>
 
-          {/* Projects Grid */}
-          <div className="grid lg:grid-cols-2 gap-8">
-            {filteredProjects.map((project, index) => (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="flex justify-center text-3xl text-green-500"
+          >
+            ↓
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Filter Section */}
+      <section className="relative py-12 px-4 bg-black border-b border-white/10">
+        <div className="container mx-auto max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center gap-4"
+          >
+            {categories.map((category, idx) => (
+              <motion.button
+                key={category}
+                onClick={() => setActiveFilter(category)}
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className={`px-6 py-3 rounded-full font-black uppercase tracking-wider transition-all duration-300 text-sm ${
+                  activeFilter === category
+                    ? "bg-green-500 text-black shadow-[0_0_30px_rgba(0,255,65,0.6)]"
+                    : "border-2 border-white/20 text-white/70 hover:border-green-500/50 hover:text-white"
+                }`}
+              >
+                {category}
+              </motion.button>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Full Screen Projects */}
+      <section className="relative bg-black">
+        {filteredProjects.map((project, idx) => (
+          <motion.div
+            key={project.id}
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, delay: idx * 0.1 }}
+            className="relative h-screen flex items-center justify-center overflow-hidden border-b border-white/10 cursor-pointer group"
+            onClick={() => setActiveProject(activeProject === project.id ? null : project.id)}
+          >
+            {/* Background Image */}
+            <motion.img
+              src={project.image}
+              alt={project.title}
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+
+            {/* Gradient Overlay */}
+            <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-25 transition-opacity duration-500 mix-blend-screen`} />
+            
+            {/* Dark Overlay */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-black/20"
+              initial={{ opacity: 0.7 }}
+              whileHover={{ opacity: 0.5 }}
+              transition={{ duration: 0.3 }}
+            />
+
+            {/* Content */}
+            <div className="absolute inset-0 flex flex-col items-start justify-end p-12 md:p-20 z-10 max-w-2xl">
+              {/* Category Badge */}
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group cursor-pointer"
+                transition={{ delay: idx * 0.15 + 0.1 }}
+                className={`px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest bg-gradient-to-r ${project.gradient} text-black mb-6`}
               >
-                <div className="relative overflow-hidden rounded-3xl aspect-[4/5] lg:aspect-video bg-black/60 shadow-2xl hover:shadow-green-500/20 transition-all duration-500">
-                  {/* Background Image */}
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
+                {project.category}
+              </motion.div>
 
-                  {/* Overlay Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-75 transition-opacity duration-500" />
+              {/* Title */}
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.15 + 0.2 }}
+                className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-4 leading-tight"
+              >
+                {project.shortTitle}
+              </motion.h2>
 
-                  {/* Content Container */}
-                  <div className="absolute inset-0 flex flex-col justify-between p-8 text-white">
-                    {/* Top Badge */}
-                    <motion.div
-                      initial={{ opacity: 0, y: -20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 + 0.2 }}
-                      className={`w-fit px-4 py-2 rounded-full backdrop-blur-md bg-green-50 border border-green-500 text-xs font-semibold text-green-700`}
-                    >
-                      {project.category}
-                    </motion.div>
+              {/* Subtle Line */}
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: 60 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.15 + 0.3, duration: 0.6 }}
+                className="h-1 bg-gradient-to-r from-green-500 to-green-400 mb-8"
+              />
 
-                    {/* Bottom Content */}
-                    <div className="space-y-4">
-                      {/* Title and Description */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 + 0.3 }}
-                        className="transform group-hover:translate-y-0 transition-transform duration-500"
-                      >
-                        <h3 className="text-3xl md:text-4xl font-bold mb-2 leading-tight text-green-500">
-                          {project.title}
-                        </h3>
-                        <p className="text-white text-sm leading-relaxed max-w-xs">
-                          {project.description}
-                        </p>
-                      </motion.div>
-
-                      {/* Stats Grid */}
-                      <div className="grid grid-cols-3 gap-3 pt-4 mt-4 border-t border-white/10">
-                        {Object.entries(project.stats).map(([key, value], idx) => (
-                          <motion.div
-                            key={key}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: index * 0.1 + 0.4 + idx * 0.05 }}
-                            className="text-center"
-                          >
-                            <div className="text-lg font-bold text-primary/90">{value}</div>
-                            <div className="text-xs text-white capitalize">{key}</div>
-                          </motion.div>
-                        ))}
-                      </div>
-
-                      {/* CTA */}
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block mt-6"
-                      >
-                        <Button variant="hero" className="group/btn">
-                          Visitar Projeto
-                          <ArrowUpRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                        </Button>
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Hover Reveal - Full Details */}
+              {/* Expanded Content */}
+              <AnimatePresence>
+                {activeProject === project.id && (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
-                    whileHover={{ opacity: 1, y: 0 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
                     transition={{ duration: 0.3 }}
-                    className="absolute inset-0 bg-black/80 backdrop-blur-sm p-8 flex flex-col justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto"
+                    className="space-y-6 mt-4"
                   >
-                    <div className="space-y-4">
-                      <h3 className="text-3xl font-bold text-green-500">{project.title}</h3>
-
-                      <p className="text-white text-sm leading-relaxed">
-                        {project.longDescription}
-                      </p>
-
-                      {/* Tags */}
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-3 py-1 bg-primary/20 text-primary text-xs font-medium rounded-full border border-primary/40"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* CTA */}
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block mt-4"
-                      >
-                        <Button variant="hero" className="group/btn">
-                          Visitar Projeto
-                          <ArrowUpRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                        </Button>
-                      </a>
-                    </div>
+                    <motion.a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ x: 4, scale: 1.02 }}
+                      className="inline-flex items-center gap-3 px-6 py-3 bg-green-500 text-black font-black uppercase tracking-wider rounded-full hover:bg-green-400 transition-all duration-300 shadow-[0_0_30px_rgba(0,255,65,0.5)]"
+                    >
+                      Visitar Projeto
+                      <ArrowRight className="w-4 h-4" />
+                    </motion.a>
                   </motion.div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Hover Indicator */}
+            <motion.div
+              className="absolute bottom-12 right-12 text-white/40 group-hover:text-green-500 transition-colors duration-300"
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <div className="text-sm font-semibold">{activeProject === project.id ? "Fechar" : "Expandir"}</div>
+            </motion.div>
+
+            {/* Border Glow */}
+            <motion.div
+              className="absolute inset-0 border border-green-500/0 group-hover:border-green-500/30 transition-all duration-300"
+              style={{
+                boxShadow: "inset 0 0 40px rgba(0, 255, 65, 0)",
+              }}
+              whileHover={{
+                boxShadow: "inset 0 0 40px rgba(0, 255, 65, 0.1), 0 0 60px rgba(0, 255, 65, 0.2)",
+              }}
+            />
+
+            {/* Close Button */}
+            <AnimatePresence>
+              {activeProject === project.id && (
+                <motion.button
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0 }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveProject(null);
+                  }}
+                  className="absolute top-8 right-8 z-20 p-3 bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-full transition-all duration-300"
+                >
+                  <X className="w-6 h-6 text-white" />
+                </motion.button>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        ))}
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="relative py-40 px-4 bg-black border-t border-white/10">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.02)_1px,transparent_1px)] bg-[size:100px_100px]" />
+        </div>
+
+        <motion.div
+          className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-green-500 to-transparent rounded-full blur-3xl"
+          animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
+          transition={{ duration: 20, repeat: Infinity }}
+          style={{ opacity: 0.05 }}
+        />
+
+        <div className="container mx-auto max-w-4xl relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-6xl md:text-7xl font-black text-white mb-8">
+              Vamos criar
+              <span className="block bg-gradient-to-r from-green-400 to-emerald-500 text-transparent bg-clip-text">
+                o seu sucesso?
+              </span>
+            </h2>
+
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-3 px-8 py-4 bg-green-500 text-black font-black uppercase tracking-wider rounded-full hover:bg-green-400 transition-all duration-300 shadow-[0_0_30px_rgba(0,255,65,0.6)] hover:shadow-[0_0_50px_rgba(0,255,65,0.8)]"
+            >
+              Começar Agora
+              <ArrowRight className="w-4 h-4" />
+            </motion.a>
+          </motion.div>
         </div>
       </section>
 

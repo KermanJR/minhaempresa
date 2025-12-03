@@ -43,7 +43,7 @@ const Clients = () => {
             Empresas que <span className="text-primary">Confiam em Nós</span>
           </h2>
           <p className="text-white text-lg max-w-2xl mx-auto">
-            Mais de 80+ clientes em diferentes setores escolhem CodeVision para suas soluções digitais
+            Soluções digitais que transformam negócios em diferentes setores
           </p>
         </motion.div>
 
@@ -83,28 +83,6 @@ const Clients = () => {
               />
             </motion.div>
           ))}
-        </motion.div>
-
-        {/* Trust Indicators */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-20 grid md:grid-cols-3 gap-8 max-w-4xl mx-auto"
-        >
-          <div className="text-center">
-            <div className="text-3xl font-bold text-primary mb-2">+200</div>
-            <p className="text-sm text-white">Clientes Satisfeitos</p>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-primary mb-2">+500</div>
-            <p className="text-sm text-white">Funcionalidades Desenvolvidas</p>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-primary mb-2">98%</div>
-            <p className="text-sm text-white">Taxa de Satisfação NPS</p>
-          </div>
         </motion.div>
       </div>
     </section>

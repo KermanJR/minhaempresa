@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import NexusLogo from "@/components/NexusLogo";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,14 +19,19 @@ const Navbar = () => {
   const navItems = [
     { label: "Sobre", href: "#about" },
     { label: "Serviços", href: "#services" },
-    { label: "Clientes", href: "#portfolio" },
+    { label: "Portfolio", href: "/portfolio" },
+    { label: "Contato", href: "#contact" },
   ];
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
+    if (href.startsWith("#")) {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        setIsMobileMenuOpen(false);
+      }
+    } else {
+      window.location.href = href;
     }
   };
 
@@ -35,8 +41,8 @@ const Navbar = () => {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-black/80 backdrop-blur-xl shadow-lg border-b border-green-500/20"
-          : "bg-black/60 backdrop-blur-xl"
+          ? "bg-black/95 shadow-lg border-b border-green-500/20"
+          : "bg-black/60"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -48,19 +54,10 @@ const Navbar = () => {
               e.preventDefault();
               scrollToSection("#home");
             }}
-            className="flex items-center gap-2 group"
             whileHover={{ scale: 1.05 }}
+            className="cursor-pointer"
           >
-            <motion.div
-              className="w-8 h-8 flex items-center justify-center"
-              style={{ filter: "drop-shadow(0 0 8px #00ff41)" }}
-            >
-              {/* Neon SVG logo */}
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 16L16 6L26 16L16 26Z" stroke="#00ff41" strokeWidth="2.5" strokeLinejoin="round" />
-              </svg>
-            </motion.div>
-            <span className="text-white text-xl font-bold tracking-tight">nexus</span>
+            <NexusLogo size="lg" withText animated />
           </motion.a>
 
           {/* Desktop Menu */}

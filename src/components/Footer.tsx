@@ -1,4 +1,5 @@
 import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import NexusLogo from "@/components/NexusLogo";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -15,14 +16,11 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-green-500 border-2 border-green-600 rounded-lg flex items-center justify-center text-white text-xs font-bold">
-                CV
-              </div>
-              <h3 className="text-2xl font-bold text-green-500">CodeVision</h3>
+            <div className="flex items-center gap-3 mb-4">
+              <NexusLogo size="lg" animated={false} />
             </div>
-            <p className="text-white text-sm">
-              Agência de software especializada em transformação digital e soluções que geram impacto real no negócio.
+            <p className="text-white/70 text-sm">
+              Transformação digital através de soluções inovadoras e tecnologia de ponta.
             </p>
           </div>
 

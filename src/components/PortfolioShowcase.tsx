@@ -23,15 +23,15 @@ const PortfolioShowcase = () => {
     {
       title: "BraSOL Engenharia",
       category: "Sites",
-      description: "Empresa de energia solar com mais de 9 anos de experiência e 500+ projetos executados. Soluções para residências, indústrias e propriedades rurais.",
-      longDescription: "Portal corporativo com showcase de projetos, sistema de orçamento automático, integração com WhatsApp e área administrativa de leads. +9 anos no mercado, 500+ clientes satisfeitos.",
+      description: "Empresa de energia solar. Soluções para residências, indústrias e propriedades rurais.",
+      longDescription: "Portal corporativo com showcase de projetos, sistema de orçamento automático, integração com WhatsApp e área administrativa de leads.",
       image: "/brasol.png",
       tags: ["Solar", "Engenharia", "Sustentabilidade"],
       link: "https://brasolengenharia.com.br/",
       stats: {
-        projects: "500+",
-        clients: "1000+",
-        experience: "9 anos"
+        projects: "Completo",
+        clients: "Múltiplos",
+        experience: "Profissional"
       },
     },
     {

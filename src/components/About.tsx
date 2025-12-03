@@ -1,101 +1,154 @@
-import { Code, Rocket, Zap, Users, Award, TrendingUp, Target, CheckCircle2, Briefcase, Globe } from "lucide-react";
+import { Award, TrendingUp, Target, Users } from "lucide-react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 
 const About = () => {
-  const coreValues = [
+  const pillars = [
     {
       icon: Award,
-      title: "Excelência Técnica",
-      description: "Código robusto, escalável e mantível. Enterprise-grade em todo projeto.",
+      title: "Excelência",
+      description: "Código robusto, escalável e enterprise-grade"
     },
     {
       icon: TrendingUp,
-      title: "Foco em Resultados",
-      description: "Cada solução é medida por impacto no negócio, não apenas por funcionalidades.",
+      title: "Resultados",
+      description: "Soluções medidas por impacto real no negócio"
     },
     {
       icon: Target,
-      title: "Estratégia Comercial",
-      description: "Alinhamento com objetivos de negócio desde a primeira conversa.",
+      title: "Estratégia",
+      description: "Alinhamento total com seus objetivos comerciais"
     },
     {
       icon: Users,
-      title: "Parceria Verdadeira",
-      description: "Você ganha uma extensão da sua equipe, totalmente dedicada ao sucesso.",
+      title: "Parceria",
+      description: "Extensão dedicada da sua equipe interna"
     },
   ];
 
-  const expertise = [
-    {
-      icon: Code,
-      title: "Desenvolvimento Enterprise",
-      items: ["Arquitetura escalável e robusta", "Padrões SOLID e design patterns", "Code review e qualidade contínua"]
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
     },
-    {
-      icon: Rocket,
-      title: "Performance & Otimização",
-      items: ["Core Web Vitals otimizados", "Infraestrutura cloud moderna", "Monitoramento em produção 24/7"]
-    },
-    {
-      icon: Globe,
-      title: "Compliance & Segurança",
-      items: ["LGPD e regulamentações", "Criptografia e dados sensíveis", "Testes de penetração e auditoria"]
-    },
-    {
-      icon: CheckCircle2,
-      title: "QA & Testes",
-      items: ["Testes unitários automatizados", "Cobertura >80%", "Testes de carga e stress"]
-    },
-  ];
+  };
 
-  const stats = [
-    { number: "80+", label: "Clientes Ativos", detail: "em todo Brasil" },
-    { number: "150+", label: "Projetos Entregues", detail: "com sucesso" },
-    { number: "5+", label: "Anos de Expertise", detail: "no mercado" },
-    { number: "99.9%", label: "Taxa de Uptime", detail: "garantida" },
-  ];
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 },
+    },
   };
 
   return (
     <section id="about" className="py-32 relative overflow-hidden bg-black">
+      {/* Animated Background Gradients */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div
+          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-green-500 to-transparent rounded-full blur-3xl"
+          animate={{
+            x: [0, 100, 0],
+            y: [0, 50, 0],
+          }}
+          transition={{ duration: 20, repeat: Infinity }}
+          style={{ opacity: 0.05 }}
+        />
+        <motion.div
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-purple-500 to-transparent rounded-full blur-3xl"
+          animate={{
+            x: [0, -100, 0],
+            y: [0, -50, 0],
+          }}
+          transition={{ duration: 25, repeat: Infinity, delay: 2 }}
+          style={{ opacity: 0.05 }}
+        />
+      </div>
+
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-green-500">
-            Quem Somos
-          </h2>
-          <p className="text-white text-lg max-w-3xl mx-auto leading-relaxed">
-            Agência de software focada em resultados e parcerias duradouras. Atuamos de forma discreta, priorizando a confiança e o sucesso dos nossos clientes.
+        {/* Header */}
+        <motion.div
+          className="text-center mb-24"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <div className="inline-block border border-green-500/40 rounded-full px-6 py-2 mb-8">
+            <span className="text-xs font-semibold text-green-500 tracking-widest uppercase">
+              Quem Somos
+            </span>
+          </div>
+          <p className="text-white/70 text-lg md:text-xl max-w-4xl mx-auto font-light leading-relaxed mb-6">
+            Uma agência de tecnologia focada em <span className="text-green-500 font-semibold">transformação digital</span>. Criamos soluções que não apenas funcionam, mas que geram impacto real no seu negócio.
           </p>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20 py-12 border-t border-b border-green-500/30">
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-green-500 mb-2">80+</div>
-            <div className="font-semibold text-white mb-1">Clientes Ativos</div>
-            <div className="text-xs text-white">em todo Brasil</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-green-500 mb-2">150+</div>
-            <div className="font-semibold text-white mb-1">Projetos Entregues</div>
-            <div className="text-xs text-white">com sucesso</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-green-500 mb-2">5+</div>
-            <div className="font-semibold text-white mb-1">Anos de atuação</div>
-            <div className="text-xs text-white">no mercado</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-green-500 mb-2">99.9%</div>
-            <div className="font-semibold text-white mb-1">Taxa de Uptime</div>
-            <div className="text-xs text-white">garantida</div>
-          </div>
-        </div>
+        </motion.div>
+
+        {/* Four Pillars Grid */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {pillars.map((pillar, idx) => {
+            const Icon = pillar.icon;
+            return (
+              <motion.div
+                key={idx}
+                variants={itemVariants}
+                className="group relative h-full cursor-pointer"
+                whileHover={{ y: -4 }}
+              >
+                {/* Card Background */}
+                <div className="relative h-full p-8 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] backdrop-blur-sm transition-all duration-300 overflow-hidden">
+                  {/* Subtle Hover Gradient */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  />
+
+                  <div className="relative z-10 flex flex-col h-full">
+                    {/* Icon */}
+                    <motion.div
+                      whileHover={{ scale: 1.15, rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                      className="mb-6"
+                    >
+                      <Icon className="w-8 h-8 text-green-500 stroke-[1.5]" />
+                    </motion.div>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-black text-white mb-3 tracking-tight">
+                      {pillar.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-white/60 text-sm leading-relaxed font-light flex-grow">
+                      {pillar.description}
+                    </p>
+
+                    {/* Bottom Accent */}
+                    <motion.div
+                      className="mt-6 h-px bg-gradient-to-r from-green-500/0 via-green-500/30 to-green-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    />
+
+                    {/* Index */}
+                    <motion.div className="mt-4 text-xs text-white/30 font-semibold tracking-widest">
+                      {String(idx + 1).padStart(2, "0")}
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
+
       </div>
     </section>
   );
