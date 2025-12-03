@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MessageSquare, Palette, Code, Rocket, ArrowRight, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import NexusLogo from "@/components/NexusLogo";
 
 const Process = () => {
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
@@ -77,11 +78,23 @@ const Process = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1 }}
+            viewport={{ once: true }}
+            className="mb-6 flex justify-center"
+          >
+            <NexusLogo size="lg" />
+          </motion.div>
           <div className="inline-block border border-green-500/40 rounded-full px-6 py-2 mb-8">
             <span className="text-xs font-semibold text-green-500 tracking-widest uppercase">
               Processo
             </span>
           </div>
+          <h2 className="text-5xl md:text-6xl font-black text-white mb-4">
+            Transformação em 4 Passos
+          </h2>
           <p className="text-white/60 text-lg font-light">
             Quatro etapas simples que transformam sua visão em realidade
           </p>

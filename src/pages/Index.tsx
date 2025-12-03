@@ -27,7 +27,7 @@ const Index = () => {
       <Stats />
       <About />
       <WhyNexus />
-      <TrustBadges />
+   
       <Services />
       <TechStack />
       <ComparisonTable />

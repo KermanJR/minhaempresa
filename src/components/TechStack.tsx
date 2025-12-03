@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import SectionIcon from "@/components/SectionIcon";
+import NexusLogo from "@/components/NexusLogo";
 
 const TechStack = () => {
   const technologies = [
@@ -91,10 +91,8 @@ const TechStack = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <div className="flex justify-center items-center gap-2 mb-6">
-            <div className="w-8 h-8 flex items-center justify-center rounded border border-green-500/50">
-              <SectionIcon size={20} />
-            </div>
+          <div className="flex justify-center items-center gap-3 mb-6">
+            <NexusLogo size="md" />
             <span className="text-xs font-black text-green-500 tracking-widest uppercase">Tech Stack</span>
           </div>
           <div className="inline-block border border-green-500/40 rounded-full px-6 py-2 mb-8">

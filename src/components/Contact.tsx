@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Mail, Phone, Send, CheckCircle, MessageCircle, Calendar, ArrowRight, Clock } from "lucide-react";
-import SectionIcon from "@/components/SectionIcon";
+import NexusLogo from "@/components/NexusLogo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -92,11 +92,9 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="flex justify-center items-center gap-2 mb-6"
+            className="flex justify-center items-center gap-3 mb-6"
           >
-            <div className="w-8 h-8 flex items-center justify-center rounded border border-green-500/50">
-              <SectionIcon size={20} />
-            </div>
+            <NexusLogo size="md" />
             <span className="text-xs font-black text-green-500 tracking-widest uppercase">Nexus Support</span>
           </motion.div>
           <div className="inline-block border border-green-500/40 rounded-full px-6 py-2 mb-8">

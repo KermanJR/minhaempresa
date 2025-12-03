@@ -58,7 +58,7 @@ const Footer = () => {
         </div>
 
         <div className="pt-8 border-t border-green-500/20 text-center text-white text-xs uppercase tracking-wider">
-          <p>© {currentYear} CodeVision. Todos os direitos reservados.</p>
+          <p>© {currentYear} Nexus. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>
