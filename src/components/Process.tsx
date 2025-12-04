@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { MessageSquare, Palette, Code, Rocket, ArrowRight, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
-import NexusLogo from "@/components/NexusLogo";
 
 const Process = () => {
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
@@ -85,7 +84,7 @@ const Process = () => {
             viewport={{ once: true }}
             className="mb-6 flex justify-center"
           >
-            <NexusLogo size="lg" />
+            <img src="/fav1.png" alt="Nexus Developer" className="h-12 w-auto" />
           </motion.div>
           <div className="inline-block border border-green-500/40 rounded-full px-6 py-2 mb-8">
             <span className="text-xs font-semibold text-green-500 tracking-widest uppercase">

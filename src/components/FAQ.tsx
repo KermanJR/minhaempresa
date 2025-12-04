@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import NexusLogo from "@/components/NexusLogo";
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -81,7 +80,7 @@ const FAQ = () => {
           viewport={{ once: true }}
         >
           <div className="flex justify-center items-center gap-3 mb-6">
-            <NexusLogo size="md" />
+            <img src="/fav1.png" alt="Nexus Developer" className="h-12 w-auto" />
             <span className="text-xs font-black text-green-500 tracking-widest uppercase">Dúvidas Frequentes</span>
           </div>
           <div className="inline-block border border-green-500/40 rounded-full px-6 py-2 mb-8">

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import NexusLogo from "@/components/NexusLogo";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -57,7 +56,11 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             className="cursor-pointer"
           >
-            <NexusLogo size="lg" withText animated />
+            <img 
+              src="/logo1.png" 
+              alt="Nexus Developer" 
+              className="h-12 w-auto"
+            />
           </motion.a>
 
           {/* Desktop Menu */}

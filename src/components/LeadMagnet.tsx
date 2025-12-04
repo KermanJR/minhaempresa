@@ -1,27 +1,52 @@
 import { useState } from "react";
 import { Mail, Download, Check } from "lucide-react";
 import { motion } from "framer-motion";
+import emailjs from '@emailjs/browser';
 
 const LeadMagnet = () => {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+    if (!email) {
+      setError("Email é obrigatório");
+      return;
+    }
 
     setLoading(true);
+    setError("");
 
-    // Simular envio
-    setTimeout(() => {
+    try {
+      // Enviar email via EmailJS
+      const templateParams = {
+        from_name: name.trim() || 'Cliente',
+        from_email: email.trim(),
+        to_email: 'nexusdeveloperprofissional@gmail.com'
+      };
+
+      await emailjs.send(
+        'service_i9tdm3k',
+        'template_lead',
+        templateParams,
+        '1AplQGolV8oCsNRRk'
+      );
+
       setSubmitted(true);
       setLoading(false);
       setTimeout(() => {
         setEmail("");
+        setName("");
         setSubmitted(false);
       }, 3000);
-    }, 1500);
+    } catch (err) {
+      console.error("Erro ao enviar lead:", err);
+      setError("Erro ao enviar email. Tente novamente.");
+      setLoading(false);
+    }
   };
 
   return (
@@ -147,6 +172,19 @@ const LeadMagnet = () => {
                     <form onSubmit={handleSubmit} className="space-y-4">
                       <div>
                         <label className="block text-sm font-semibold text-white mb-3">
+                          Seu Nome (Opcional)
+                        </label>
+                        <input
+                          type="text"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          placeholder="João Silva"
+                          className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-green-500/50 focus:bg-white/15 transition-all duration-300"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-white mb-3">
                           Seu Email
                         </label>
                         <div className="relative">
@@ -154,13 +192,26 @@ const LeadMagnet = () => {
                           <input
                             type="email"
                             value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={(e) => {
+                              setEmail(e.target.value);
+                              setError("");
+                            }}
                             placeholder="seu@email.com"
                             required
                             className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-green-500/50 focus:bg-white/15 transition-all duration-300"
                           />
                         </div>
                       </div>
+
+                      {error && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="p-3 rounded-xl bg-red-500/20 border border-red-500/50 text-red-400 text-sm"
+                        >
+                          {error}
+                        </motion.div>
+                      )}
 
                       <motion.button
                         type="submit"

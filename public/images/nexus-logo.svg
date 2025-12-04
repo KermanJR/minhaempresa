@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 120" fill="none">
+  <!-- X Symbol -->
+  <g transform="translate(0, 10)">
+    <!-- First diagonal bar (top-left to bottom-right) -->
+    <path d="M 15 5 L 55 45 L 60 40 L 20 0 Z" fill="#1B7340" stroke="#1B7340" stroke-width="2"/>
+    <path d="M 20 0 L 60 40 L 95 5 L 55 -35 Z" fill="#1B7340" stroke="#1B7340" stroke-width="2"/>
+    
+    <!-- Second diagonal bar (top-right to bottom-left) -->
+    <path d="M 95 5 L 55 45 L 60 50 L 100 10 Z" fill="#1B7340" stroke="#1B7340" stroke-width="2"/>
+    <path d="M 55 45 L 15 85 L 10 80 L 50 40 Z" fill="#1B7340" stroke="#1B7340" stroke-width="2"/>
+    
+    <!-- Horizontal bar -->
+    <rect x="5" y="35" width="105" height="15" rx="2" fill="#1B7340" stroke="#1B7340" stroke-width="2"/>
+    
+    <!-- Outline effect -->
+    <path d="M 15 5 L 55 45 M 60 40 L 20 0 M 95 5 L 55 45 M 60 50 L 100 10 M 55 45 L 15 85 M 10 80 L 50 40" 
+          stroke="#00ff41" stroke-width="3" fill="none" opacity="0.3"/>
+  </g>
+  
+  <!-- NEXUS Text -->
+  <text x="170" y="75" font-family="Arial, sans-serif" font-weight="900" font-size="65" fill="#1B7340" letter-spacing="2">NEXUS</text>
+  
+  <!-- DEVELOPER Text -->
+  <text x="172" y="100" font-family="Arial, sans-serif" font-weight="400" font-size="20" fill="#1B7340" letter-spacing="8">DEVELOPER</text>
+</svg>

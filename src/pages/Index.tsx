@@ -26,16 +26,16 @@ const Index = () => {
       <Hero />
       <Stats />
       <About />
-      <WhyNexus />
+      {/*<WhyNexus />*/}
    
       <Services />
       <TechStack />
-      <ComparisonTable />
+      {/*<ComparisonTable />*/}
       <Pricing />
       <Portfolio />
       <Testimonials />
       <Process />
-      <Guarantee />
+      {/*<Guarantee />*/}
       <LeadMagnet />
       <FAQ />
       <Newsletter />

@@ -1,5 +1,4 @@
 import { Github, Linkedin, Twitter, Mail } from "lucide-react";
-import NexusLogo from "@/components/NexusLogo";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -17,7 +16,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <NexusLogo size="lg" animated={false} />
+              <img src="/fav1.png" alt="Nexus Developer" className="h-12 w-auto" />
             </div>
             <p className="text-white/70 text-sm">
               Transformação digital através de soluções inovadoras e tecnologia de ponta.

@@ -9,7 +9,7 @@ const Portfolio = () => {
   const projects = [
     {
       title: "Clan Color",
-      category: "E-commerce",
+      category: "Sistemas",
       description: "App com 10K+ downloads e 5K+ usuários ativos em menos de um ano.",
       fullDescription: "Desenvolvemos um aplicativo e-commerce completo para a Clan Color, transformando sua presença digital com catálogo inteligente, sistema de pagamento robusto e integração logística.",
       clientName: "Sofia Garcia",
@@ -152,6 +152,25 @@ const Portfolio = () => {
       nps: "10",
       image: "/rocket.png",
       link: "https://rocketsuprimentos.com.br/",
+      color: "from-red-500 to-orange-500",
+      metrics: [
+        { icon: TrendingUp, label: "Vendas", value: "+200%" },
+        { icon: Target, label: "Pedidos/Mês", value: "800+" },
+        { icon: Users, label: "Clientes", value: "2K+" },
+      ],
+    },
+    {
+      title: "Dr. Diego Ramos",
+      category: "Sites  ",
+      description: "E-commerce com +200% de vendas online.",
+      fullDescription: "especialista em neurocirurgia adulta, pediátrica e escoliose.",
+      clientName: "Diretor Comercial",
+      clientRole: "Diretor",
+      clientCompany: "Rocket Suprimentos",
+      testimonial: "Aumentou significativamente nossas vendas online.",
+      nps: "10",
+      image: "/diego.png",
+      link: "https://diegoramosneuro.com.br/",
       color: "from-red-500 to-orange-500",
       metrics: [
         { icon: TrendingUp, label: "Vendas", value: "+200%" },

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Mail, Phone, Send, CheckCircle, MessageCircle, Calendar, ArrowRight, Clock } from "lucide-react";
-import NexusLogo from "@/components/NexusLogo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -13,43 +13,73 @@ const Contact = () => {
     name: "",
     email: "",
     phone: "",
-    company: "",
+    service: "",
     message: "",
   });
   const [activeTab, setActiveTab] = useState<"form" | "quick">("form");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     
-    setTimeout(() => {
+    // Validação básica
+    if (!formData.name || !formData.email || !formData.message) {
+      setError("Nome, email e mensagem são obrigatórios");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setError("");
+
+    try {
+      // Enviar email via EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone || 'Não informado',
+        service: formData.service || 'Não especificado',
+        message: formData.message,
+        to_email: 'nexusdeveloperprofissional@gmail.com'
+      };
+
+      await emailjs.send(
+        'service_i9tdm3k',     // Você vai criar no EmailJS
+        'template_contact',  // Você vai criar no EmailJS
+        templateParams,
+        '1AplQGolV8oCsNRRk'    // Sua Public Key do EmailJS
+      );
+
       toast({
-        title: "Proposta Recebida!",
+        title: "Mensagem Enviada! ✓",
         description: "Você receberá um retorno em até 24h.",
       });
-      setFormData({ name: "", email: "", phone: "", company: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
       setIsSubmitting(false);
-    }, 800);
+    } catch (err) {
+      console.error("Erro ao enviar email:", err);
+      setError("Erro ao enviar mensagem. Tente novamente.");
+      setIsSubmitting(false);
+    }
   };
 
   const contactMethods = [
     {
       icon: MessageCircle,
       label: "WhatsApp",
-      value: "+55 (67) 99236-9127",
+      value: "+55 (67) 99236-9127 / (67) 99195-7902",
       description: "Conversa imediata",
     },
     {
       icon: Phone,
       label: "Telefone",
-      value: "+55 (67) 99236-9127",
+      value: "+55 (67) 99236-9127 / (67) 99195-7902",
       description: "Chamada direta",
     },
     {
       icon: Mail,
       label: "Email",
-      value: "kermanpereira@gmail.com",
+      value: "nexusdeveloperprofissional@gmail.com",
       description: "Mensagem formal",
     },
   ];
@@ -94,7 +124,7 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="flex justify-center items-center gap-3 mb-6"
           >
-            <NexusLogo size="md" />
+            <img src="/fav1.png" alt="Nexus Developer" className="h-12 w-auto" />
             <span className="text-xs font-black text-green-500 tracking-widest uppercase">Nexus Support</span>
           </motion.div>
           <div className="inline-block border border-green-500/40 rounded-full px-6 py-2 mb-8">
@@ -207,13 +237,13 @@ const Contact = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-white mb-3">
-                      Empresa
+                      Tipo de Serviço
                     </label>
                     <Input
-                      placeholder="Sua empresa"
-                      value={formData.company}
+                      placeholder="Ex: E-commerce, Site, Sistema..."
+                      value={formData.service}
                       onChange={(e) =>
-                        setFormData({ ...formData, company: e.target.value })
+                        setFormData({ ...formData, service: e.target.value })
                       }
                       className="bg-white/5 border-white/10 focus:border-green-500 text-white placeholder:text-white/40 rounded-lg"
                     />
@@ -235,6 +265,16 @@ const Contact = () => {
                     className="bg-white/5 border-white/10 focus:border-green-500 text-white placeholder:text-white/40 rounded-lg resize-none"
                   />
                 </div>
+
+                {error && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 rounded-lg bg-red-500/20 border border-red-500/50 text-red-400 text-sm"
+                  >
+                    {error}
+                  </motion.div>
+                )}
 
                 <div className="flex gap-4 pt-4">
                   <motion.button
@@ -288,7 +328,7 @@ const Contact = () => {
                         ? `https://wa.me/5567992369127`
                         : method.label === "Telefone"
                         ? "tel:+5567992369127"
-                        : "mailto:kermanpereira@gmail.com"
+                        : "mailto:nexusdeveloperprofissional@gmail.com"
                     }
                     target={method.label !== "Email" ? "_blank" : undefined}
                     rel={method.label !== "Email" ? "noopener noreferrer" : undefined}
@@ -336,14 +376,12 @@ const Contact = () => {
                       Prefere conversar em um horário específico? Agende uma reunião conosco.
                     </p>
                     <motion.a
-                      href="https://calendly.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="mailto:nexusdeveloperprofissional@gmail.com?subject=Agendamento de Reunião"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="inline-flex items-center gap-2 px-6 py-3 border border-green-500/50 text-green-500 font-semibold rounded-full hover:bg-green-500/10 transition-all duration-300"
                     >
-                      Abrir Calendário
+                      Solicitar Agendamento
                       <Calendar className="w-4 h-4" />
                     </motion.a>
                   </div>
